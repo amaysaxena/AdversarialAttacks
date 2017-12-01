@@ -18,13 +18,13 @@ def unpickle(file):
         dict = pickle.load(fo, encoding='bytes')
     return dict
 
-label_names = unpickle("/../cifar-10-batches-py/batches.meta")
+label_names = unpickle("src/cifar-10-batches-py/batches.meta")
 
-json_file = open('model.json', 'r')
+json_file = open('src/model.json', 'r')
 loaded_model_json = json_file.read()
 json_file.close()
 loaded_model = model_from_json(loaded_model_json)
-loaded_model.load_weights("model.hdf5")
+loaded_model.load_weights("src/model.hdf5")
 print("Loaded model from disk")
 
 loaded_model.compile(loss='categorical_crossentropy', optimizer='adam')
@@ -86,6 +86,11 @@ index_final, value = find_seed(b'horse')
 sp.misc.imsave("thing" + ".png", x_10[index_final])
 print(category(index_final))
 target_index = 7
+
+
+###########################################################################
+####                GENETIC ALGORITHM IMPLEMENTATION                   ####
+###########################################################################
 
 class Solution:
     def __init__(self, image):
